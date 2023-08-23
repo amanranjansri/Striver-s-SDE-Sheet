@@ -1,0 +1,22 @@
+void solve(int i, int sum, vector<int> &num, int n, vector<int> &v)
+{
+	//base case
+	if(i == n)
+	{
+		v.push_back(sum);
+		return;
+	}
+
+	solve(i+1,sum+num[i],num,n,v);
+	solve(i+1,sum,num,n,v);
+}
+vector<int> subsetSum(vector<int> &num){
+	// Write your code here.
+	int n = num.size();
+	vector<int>v;
+
+	solve(0,0,num,n,v);
+
+	sort(v.begin(), v.end());
+	return v;	
+}
